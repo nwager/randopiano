@@ -20,31 +20,30 @@ document.addEventListener("keydown", KeydownEvent);
 document.addEventListener("click", ClickEvent);
 
 function KeydownEvent (e) {
-    console.log("key down");
     if (e.code == "Space") {
         RandomNote();
     }
 }
 
 function ClickEvent () {
-    console.log("click");
     RandomNote();
 }
 
-var lastNum; // variable to store last number rolled
+var lastNums = [-1, -1]; // array to store last 2 numbers
 function RandomNote () {
 
     var randomNum = Math.floor(Math.random() * naturals.length);
-    
-    // no repeat notes - check if current number is within 1 of last number
-    while (randomNum >= lastNum - 1 || randomNum <= lastNum + 1) {
+
+    // no repeat notes - check if current number = either of last 2 numbers
+    while (randomNum == lastNums[0] || randomNum == lastNums[1]) {
         randomNum = Math.floor(Math.random() * naturals.length);
     }
 
     var randomNote = naturals[randomNum];
     note.innerHTML = randomNote;
 
-    // save last number rolled
-    lastNum = randomNum;
+    // save last 2 numbers
+    lastNums.unshift(randomNum);
+    lastNums.splice(2, 1);
 
 }
