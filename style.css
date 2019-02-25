@@ -10,3 +10,10 @@ body {
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
 }
+
+#githubLink {
+    position: absolute;
+    bottom: 1em;
+    text-decoration: none;
+    color: black;
+}
