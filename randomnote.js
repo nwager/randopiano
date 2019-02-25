@@ -36,8 +36,8 @@ function RandomNote () {
 
     var randomNum = Math.floor(Math.random() * naturals.length);
     
-    // no repeat notes - check if current number = last number
-    while (randomNum === lastNum) {
+    // no repeat notes - check if current number is within 1 of last number
+    while (randomNum >= lastNum - 1 || randomNum <= lastNum + 1) {
         randomNum = Math.floor(Math.random() * naturals.length);
     }
 
